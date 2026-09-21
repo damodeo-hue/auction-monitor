@@ -1,0 +1,17 @@
+name: Auction Monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test auction monitor
+        run: |
+          echo "Auction monitor is alive!"
+          echo "Current time:"
+          date
