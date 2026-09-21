@@ -6,12 +6,14 @@ on:
     - cron: "*/15 * * * *"
 
 jobs:
-  test:
+  test-notification:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Test auction monitor
+      - name: Send test notification
         run: |
-          echo "Auction monitor is alive!"
-          echo "Current time:"
-          date
+          curl \
+            -H "Title: Auction Monitor Test" \
+            -H "Priority: default" \
+            -d "GitHub successfully triggered your auction monitor!" \
+            "https://ntfy.sh/${{ secrets.NTFY_TOPIC }}"
